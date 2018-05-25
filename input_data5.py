@@ -6,6 +6,7 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.utils import shuffle
 from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import Normalizer
 
 def read_data(filepath,is_test=False):
     df=pd.read_csv(filepath)
@@ -15,6 +16,7 @@ def read_data(filepath,is_test=False):
     for i in range(len(df)):
         datas.append([])
 
+    col_used=['OverallQual', 'GrLivArea', 'GarageCars', 'FullBath', 'YearBuilt']
 
     col_set={
         "MSSubClass":16,
@@ -67,6 +69,8 @@ def read_data(filepath,is_test=False):
 
 
     for k,v in col_set.items():
+        if k not in col_used:
+            continue
         col_data=LabelEncoder().fit_transform(df[k].fillna('***'))
         idx=0
         for x in col_data:
@@ -74,6 +78,7 @@ def read_data(filepath,is_test=False):
             bb[x]=1
             datas[idx]=datas[idx]+bb
             idx=idx+1
+
 
     col_val=[
         "LotFrontage",
@@ -111,11 +116,13 @@ def read_data(filepath,is_test=False):
         "YrSold"
     ]
 
-
     for col in col_val:
-        mean=df[col].median()
+        if k not in col_used:
+            continue
+        mean=df[col].mean()
         xx=df[col].fillna(mean)
-        col_data=StandardScaler().fit_transform(xx.values.reshape(-1,1))
+        # col_data=StandardScaler().fit_transform(xx.values.reshape(-1,1))
+        col_data=Normalizer().fit_transform(xx.values.reshape(-1,1))
         col_data=col_data.reshape(-1)
         idx=0
         for x in col_data:
