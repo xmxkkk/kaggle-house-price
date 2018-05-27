@@ -1,11 +1,8 @@
-from input_data3 import read_data
+from input_data7 import read_data
 
 X_train,y_train=read_data("./data/train.csv")
 X_test,y_test=read_data("./data/test.csv",True)
 
-
-def root_mean_squared_error(y_true, y_pred):
-    return K.sqrt(K.mean(K.square(y_pred - y_true), axis=-1))
 
 from keras.models import Sequential
 from keras.layers import Dense,BatchNormalization,Dropout,Flatten,Reshape

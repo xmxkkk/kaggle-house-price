@@ -1,4 +1,4 @@
-from input_data5 import read_data
+from input_data7 import read_data
 
 X_train,y_train=read_data("./data/train.csv")
 X_test,y_test=read_data("./data/test.csv",True)
@@ -25,25 +25,16 @@ from sklearn.linear_model import LinearRegression
 from sklearn.linear_model import LogisticRegression
 from sklearn.linear_model import TheilSenRegressor
 from sklearn.metrics import mean_absolute_error
-# 100=0.20267
-# 20 =0.18192
-# 5  =0.17847
-# 4  =0.17963
-# 3  =0.17830
-# 2  =0.18685
-# 1  =0.20278
 
-# data5=26587.4782609
+
+# data3=23628.5231884
+# data7=22182.8652174
 model=KNeighborsRegressor(n_neighbors=3)#data3  22424.4862319 data5 fan=27056.1391304
 model.fit(X_train,y_train)
 y_pred_valid=model.predict(X_valid)
 print(mean_absolute_error(y_valid,y_pred_valid))
 
 
-model=LogisticRegression()#0.602697732762
-model.fit(X_train,y_train)
-y_pred_valid=model.predict(X_valid)
-print(mean_absolute_error(y_valid,y_pred_valid))
 
 '''
 model=TheilSenRegressor()#0.602697732762
