@@ -1,4 +1,4 @@
-from input_data9 import read_data
+from input_data15 import read_data
 
 X_train,y_train=read_data("./data/train.csv")
 X_test,y_test=read_data("./data/test.csv",True)
@@ -28,6 +28,8 @@ model.add(Dense(1))
 model.compile(optimizer='adam',loss='mae',metrics=['mae'])
 
 # for i in range(15):
+# 1500 0.14983
+# 3000 0.14421
 model.fit(X_train,y_train,batch_size=X_train.shape[0],epochs=3000,verbose=1)
 # model.save_weights("./x.w")
 
