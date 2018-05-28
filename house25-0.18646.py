@@ -1,4 +1,4 @@
-from input_data7 import read_data
+from input_data9 import read_data
 
 X_train,y_train=read_data("./data/train.csv")
 X_test,y_test=read_data("./data/test.csv",True)
