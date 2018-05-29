@@ -152,8 +152,15 @@ y_train=np.log1p(y_train)
 # sns.distplot(y_train)
 # plt.show()
 
+
+
 train=all_data[:n_train]
 test=all_data[n_train:]
+
+train.to_csv("./data/x_train.csv",index=False)
+pd.DataFrame({"SalePrice":y_train}).to_csv("./data/y_train.csv",index=False)
+test.to_csv("./data/x_test.csv",index=False)
+
 
 n_folds=5
 def rmsle_cv(model):
