@@ -20,8 +20,6 @@ print(df.values)
 result=RobustScaler().fit_transform(df.values)
 print(result)
 
-
-
 data=np.random.normal(0,10,1000)
 
 data=RobustScaler().fit_transform(data.reshape((-1,1)))

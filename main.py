@@ -56,6 +56,12 @@ plt.show()
 # Deleting outliers
 train = train.drop(train[(train['GrLivArea'] > 4000) & (train['SalePrice'] < 300000)].index)
 
+train=train.drop(train[(train['OverallQual']==10)&(train['SalePrice']<200000)].index)
+train=train.drop(train[(train['GrLivArea']>4000)&(train['SalePrice']<200000)].index)
+train=train.drop(train[(train['GarageArea']>1200)&(train['SalePrice']<300000)].index)
+train=train.drop(train[(train['TotalBsmtSF']>4000)&(train['SalePrice']<200000)].index)
+
+
 # Check the graphic again
 fig, ax = plt.subplots()
 ax.scatter(train['GrLivArea'], train['SalePrice'])
